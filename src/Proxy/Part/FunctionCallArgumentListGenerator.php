@@ -48,7 +48,7 @@ final class FunctionCallArgumentListGenerator extends AbstractGenerator
 
         foreach ($functionLike->getParameters() as $parameter) {
             $byReference  = ($parameter->isPassedByReference() && !$parameter->isVariadic()) ? '&' : '';
-            $this->hasOptionals = $this->hasOptionals || $parameter->isOptional();
+            $this->hasOptionals = $this->hasOptionals || ($parameter->isOptional() && !$parameter->isVariadic());
             $this->arguments[]  = $byReference . '$' . $parameter->name;
         }
         if ($functionLike->isVariadic()) {

@@ -25,10 +25,12 @@ class FunctionCallArgumentListGeneratorTest extends TestCase
      */
     public function testGenerate(string $functionName, string $expectedLine): void
     {
+
         $reflection = new ReflectionFunction($functionName);
         $generator  = new FunctionCallArgumentListGenerator($reflection);
         $actualLine = $generator->generate();
         $this->assertSame($expectedLine, $actualLine);
+
     }
 
     /**
@@ -37,10 +39,10 @@ class FunctionCallArgumentListGeneratorTest extends TestCase
     public function dataGenerator(): array
     {
         return [
-            ['var_dump', '$vars'],                    // var_dump(...$vars)
-            ['array_pop', '[&$stack]'],               // array_pop(&$stack)
-            ['array_diff_assoc', '[$arr1], $arrays'], // array_diff_assoc($arr1, ...$arrays)
-            ['strcoll', '[$str1, $str2]'],            // strcoll($str1, $str2)
+            ['is_numeric', '[$value]'],                    // var_dump(...$vars)
+            ['array_pop', '[&$array]'],               // array_pop(&$stack)
+            ['array_diff_assoc', '[$array], $arrays'], // array_diff_assoc($arr1, ...$arrays)
+            ['strcoll', '[$string1, $string2]'],            // strcoll($string1, $string2)
             ['basename', '\array_slice([$path, $suffix], 0, \func_num_args())'],  // basename($path, $suffix = null)
         ];
     }

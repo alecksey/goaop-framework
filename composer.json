@@ -8,17 +8,17 @@
     "license": "MIT",
 
     "require": {
-        "php": "^7.4.0",
+        "php": "^8.0",
         "doctrine/annotations": "^1.11.1",
         "doctrine/cache": "^1.10",
-        "goaop/parser-reflection": "^3.0.1",
-        "jakubledl/dissect": "~1.0",
+        "goaop/parser-reflection": "dev-php8",
+        "jakubledl/dissect": "dev-php8",
         "laminas/laminas-code": "^4.0",
         "symfony/finder": "^4.4|^5.1"
     },
 
     "require-dev": {
-        "adlawson/vfs": "^0.12.1",
+        "adlawson/vfs": "dev-php8",
         "doctrine/orm": "^2.5",
         "phpstan/phpstan": "^0.12.64",
         "phpunit/phpunit": "^9.5",
@@ -66,5 +66,19 @@
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "repositories": [
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/alecksey/dissect"
+        },
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/alecksey/goaop-parser-reflection"
+        },
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/alecksey/php-vfs"
+        }
+    ]
 }

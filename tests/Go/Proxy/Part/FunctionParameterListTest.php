@@ -56,12 +56,18 @@ class FunctionParameterListTest extends TestCase
         return [
             [
                 'var_dump', // var_dump(...$vars)
-                1,
+                2,
                 [
                     [
                         'getPassedByReference' => false,
+                        'getVariadic'          => false,
+                        'getName'              => 'value',
+                        'getDefaultValue'      => null,
+                    ],
+                    [
+                        'getPassedByReference' => false,
                         'getVariadic'          => true,
-                        'getName'              => 'vars',
+                        'getName'              => 'values',
                         'getDefaultValue'      => null,
                     ]
                 ]
@@ -73,7 +79,7 @@ class FunctionParameterListTest extends TestCase
                     [
                         'getPassedByReference' => true,
                         'getVariadic'          => false,
-                        'getName'              => 'stack',
+                        'getName'              => 'array',
                         'getDefaultValue'      => null,
                     ]
                 ]
@@ -85,19 +91,27 @@ class FunctionParameterListTest extends TestCase
                     [
                         'getPassedByReference' => false,
                         'getVariadic'          => false,
-                        'getName'              => 'str1',
+                        'getName'              => 'string1',
                         'getDefaultValue'      => null,
                     ]
                 ]
             ],
             [
-                'microtime', // microtime($get_as_float = null)
+                'microtime', // microtime($as_float = null)
                 1,
                 [
                     [
                         'getPassedByReference' => false,
                         'getVariadic'          => false,
-                        'getName'              => 'get_as_float',
+                        'getName'              => 'as_float',
+                        'getDefaultValue'      => ValueGenerator::class
+                    ]
+                ],
+                [
+                    [
+                        'getPassedByReference' => false,
+                        'getVariadic'          => false,
+                        'getName'              => 'as_float',
                         'getDefaultValue'      => ValueGenerator::class
                     ]
                 ]
